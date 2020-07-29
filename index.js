@@ -120,7 +120,6 @@ io.on("connection", socket => {
         console.log(err);
       }
     });
-   
   });
 
 
@@ -202,7 +201,7 @@ io.on("connection", socket => {
   
     var x = sentiment.analyze(message.message);
     console.log(message.isBan);
-    if(x.score < -5){
+    if(x.score <= -5){
       message.isBan = true;
       console.log(message.isBan);
     }
@@ -231,7 +230,7 @@ io.on("connection", socket => {
     message.score = x.score;
    // message.spamcheck = spamcheck.detect(message.message);
     message.createdAt = new Date();
-    if(message.score < -5){
+    if(message.score <= -5){
       message.isBan=true;
     }
     let newMessage = Message(message);
